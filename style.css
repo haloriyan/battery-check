@@ -1,0 +1,35 @@
+body {
+	background-color: #34495e;
+}
+.bar {
+	width: 100%;
+	background: #ecf0f1;
+	height: 70px;
+}
+.persen {
+	background-color: red;
+	width: 20%;
+	height: 70px;
+}
+.container {
+	position: absolute;
+	top: 90px;left: 0px;right: 0px;
+	color: #fff;
+}
+.container h1 {
+	font-size: 55px;
+	font-family: OBold;
+	margin-bottom: 80px;
+}
+.container h2 {
+	font-family: OBold;
+	font-size: 35px;
+	margin-top: 55px;
+	background: rgba(231, 76, 60, 0.7);
+	line-height: 90px;
+}
+.container .wrap {
+	margin-left: 10%;
+	margin-right: 10%;
+}
+#warning { display: none; }

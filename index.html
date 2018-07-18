@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale = 1">
+	<title>Cek Baterai</title>
+	<link href="fw/build/fw.css" rel="stylesheet">
+	<link href="fw/build/font-awesome.min.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container rata-tengah">
+	<div class="wrap">
+	<h1>Baterai Saya <span id="angka"></span></h1>
+		<div class="bar">
+			<div class="persen" style="width: 15%;"></div><br />
+		</div>
+		<div id="warning">
+			<div class="wrap">
+				<h2>Peringatan! Harap segera mengisi daya!</h2>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="embo.js"></script>
+<script>
+	function init() {
+		navigator.getBattery().then(function(myBat) {
+			let isCharging = false
+			let warna
+			let persen = myBat.level * 100
+
+			myBat.addEventListener("chargingchange", function() {
+				isCharging = myBat.charging
+			})
+
+			if(persen <= 25) {
+				warna = "#e74c3c"
+				if(isCharging == false) {
+					muncul("#warning")
+				}
+			}else if(persen >= 26 && persen <= 50) {
+				warna = "#fcd480"
+			}else if(persen >= 51 && persen <= 100) {
+				warna = "#4caf50"
+			}
+			pengaya(".persen", "width: " + persen + "%; background-color: " + warna)
+			tulis("#angka", persen.toFixed(0) + "%")
+		})
+	}
+	setInterval(function() {
+		init()
+	}, 1000)
+</script>
+</body>
+</html>
